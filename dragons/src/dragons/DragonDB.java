@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package veille;
+package dragons;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -111,6 +111,7 @@ public class DragonDB {
         String nom;
         Scanner sc = new Scanner(System.in);
         nom = sc.nextLine();
+        nom= user.upperCaseFirst(nom);
         boolean success = false;
         try {
             String query = "DELETE FROM dragons WHERE dragon = ?";
@@ -134,7 +135,7 @@ public class DragonDB {
         dragon = sc.nextLine();
         try {
             System.out.println("quel element souhaitez vous modifier ?");
-            String userChoice = userChoice();
+            String userChoice = user.userChoiceUpdate();
             System.out.println("nouvelle valeur ?");
             String update;
             update = sc.nextLine();
@@ -142,9 +143,8 @@ public class DragonDB {
             String query = " UPDATE dragons SET " + userChoice + "  = ?  WHERE dragons.dragon = ? ";
             Connection cnx = ConnectionDB.connect();
             PreparedStatement declaration = cnx.prepareStatement(query);
-            declaration.setString(1, update);
+            declaration.setString(1, user.upperCaseFirst(update));
             declaration.setString(2, dragon);
-            System.out.println(declaration);
             int executeUpdate = declaration.executeUpdate();
             getAllDragons();
             if (executeUpdate == 1) {
@@ -158,36 +158,4 @@ public class DragonDB {
             );
         }
     }
-
-    public static String userChoice() {
-        String choice = null;
-        int value;
-        System.out.println("nom dragon = 1, sexe =2 , longueur = 3, nombre_ecailles = 4, crache_feu = 5,comportement_amoureux= 6 ");
-        Scanner sc = new Scanner(System.in);
-        value = sc.nextInt();
-        switch (value) {
-            case 1:
-                choice = "dragon";
-                break;
-            case 2:
-                choice = "sexe";
-                break;
-            case 3:
-                choice = "longueur";
-                break;
-            case 4:
-                choice = "nombre_ecailles";
-                break;
-            case 5:
-                choice = "crache_feu";
-                break;
-            case 6:
-                choice = "comportement_amoureux";
-                break;
-        }
-        System.out.println(choice);
-        return choice;
-
-    }
-
 }

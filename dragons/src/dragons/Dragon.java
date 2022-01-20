@@ -1,4 +1,4 @@
-package veille;
+package dragons;
 
 import java.util.Scanner;
 
@@ -90,18 +90,17 @@ class Dragon {
         System.out.println("Saisissez un nouveau Dragon");
         Scanner sc = new Scanner(System.in);
         System.out.println("Nom : ");
-        this.setDragon(sc.nextLine());
+        this.setDragon(user.upperCaseFirst(sc.nextLine()));
         System.out.println("sexe : ");
-        this.setSexe(sc.nextLine());
-        System.out.println("longueur : ");
-        this.setLongueur(sc.nextInt());
-        System.out.println("nombre ecaille : ");
-        this.setNombre_ecailles(sc.nextInt());
-        sc.nextLine();
+        this.setSexe(user.upperCaseFirst(user.maleOrFemale()));        
+        System.out.println("longueur : (doit être en chiffre");
+        this.setLongueur(user.isANumber());
+        System.out.println("nombre ecaille : (doit être en chiffre)");
+        this.setNombre_ecailles(user.isANumber());
         System.out.println("crache feu t'il du feu ? : ");
-        this.setCrache_feu(sc.nextLine());
+        this.setCrache_feu(user.upperCaseFirst(user.spitFire()));
         System.out.println("comportement amoureux : ");
-        this.setComportement_amoureux(sc.nextLine());
+        this.setComportement_amoureux(user.upperCaseFirst(sc.nextLine()));
         System.out.println(this.toString());       
     }
 
