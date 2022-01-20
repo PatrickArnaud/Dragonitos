@@ -1,14 +1,19 @@
-
 package dragons;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
+    /**
+     * @author Patrick class for connect to dragon database
+     */
+
 public class ConnectionDB {
 
+    
     public static Connection connect() {
-        
+
         Connection conn = null;
         try {
             Class.forName("com.mysql.jdbc.Driver");

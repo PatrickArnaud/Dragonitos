@@ -1,16 +1,15 @@
-/**
- * @author Patrick
- */
 package dragons;
 
 import java.sql.SQLException;
 
+/**
+ * @author Patrick main class for launch dragon acces database
+ */
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-//        System.out.println(DragonDB.getDragons());
-//       DragonDB.getDragon();
-       DragonDB.addDragon();
+
+        User.launcher();
 
     }
 }

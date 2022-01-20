@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dragons;
 
 import java.util.InputMismatchException;
@@ -12,10 +7,60 @@ import java.util.Scanner;
  *
  * @author Patrick
  *
- * all methods for user interactions
+ * all methods for User interactions
  *
  */
-public class user {
+public class User {
+
+    public static boolean exit() {
+        System.out.println("Que souhaitez vous faire ?");
+        boolean choice = true;
+        int value;
+
+        System.out.println("1 - Continuer à naviguer sur la base de donnée ");
+        System.out.println("2 - Quitter le programme");
+        Scanner sc = new Scanner(System.in);
+        value = sc.nextInt();
+        switch (value) {
+            case 1:
+                choice = true;
+                break;
+            case 2:
+                choice = false;
+                break;
+        }
+        return choice;
+    }
+
+    public static void launcher() {
+
+        System.out.println("que souhaitez vous faire ?");
+        String choice = null;
+        int value;
+        System.out.println("1 - Consulter la liste de tout les dragon  ");
+        System.out.println("2 - Consulter un dragon en particulier ");
+        System.out.println("3 - Ajouter un dragon à la base de données  ");
+        System.out.println("4 - Modifier un dragon ");
+        Scanner sc = new Scanner(System.in);
+        value = sc.nextInt();
+        switch (value) {
+            case 1:
+                DragonDB.getAllDragons();
+                break;
+            case 2:
+                DragonDB.getDragon();
+                break;
+            case 3:
+                DragonDB.deleteDragonByName();
+                break;
+            case 4:
+                DragonDB.updateDragon();
+                break;
+            case 5:
+                System.out.println("aurevoir");
+                break;
+        }
+    }
 
     // choosing target for modification of a dragon
     public static String userChoiceUpdate() {
@@ -96,7 +141,7 @@ public class user {
         } while (check != true);
         return sex;
     }
-    
+
     public static String spitFire() {
         Scanner sc = new Scanner(System.in);
         String fire = null;

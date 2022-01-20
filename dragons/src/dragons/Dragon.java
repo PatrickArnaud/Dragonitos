@@ -2,8 +2,12 @@ package dragons;
 
 import java.util.Scanner;
 
+/**
+ * @author Patrick class for dragon
+ */
 class Dragon {
 
+    //constructors
     public Dragon(int id_dragon, String dragon, String sexe, int longueur, int nombre_ecailles, String crache_feu, String comportement_amoureux) {
         this.id_dragon = id_dragon;
         this.dragon = dragon;
@@ -14,14 +18,10 @@ class Dragon {
         this.comportement_amoureux = comportement_amoureux;
     }
 
-    @Override
-    public String toString() {
-        return "Dragon{" + "id_dragon=" + id_dragon + ", dragon=" + dragon + ", sexe=" + sexe + ", longueur=" + longueur + ", nombre_ecailles=" + nombre_ecailles + ", crache_feu=" + crache_feu + ", comportement_amoureux=" + comportement_amoureux + '}';
-    }
-
     public Dragon() {
     }
 
+    // variables
     private int id_dragon;
     private String dragon;
     private String sexe;
@@ -30,6 +30,7 @@ class Dragon {
     private String crache_feu;
     private String comportement_amoureux;
 
+    //getters ans setters
     public int getId_dragon() {
         return id_dragon;
     }
@@ -85,23 +86,29 @@ class Dragon {
     public void setComportement_amoureux(String comportement_amoureux) {
         this.comportement_amoureux = comportement_amoureux;
     }
+    // to string
+    @Override
+    public String toString() {
+        return "Dragon{" + "id_dragon=" + id_dragon + ", dragon=" + dragon + ", sexe=" + sexe + ", longueur=" + longueur + ", nombre_ecailles=" + nombre_ecailles + ", crache_feu=" + crache_feu + ", comportement_amoureux=" + comportement_amoureux + '}';
+    }
 
+    //methode to create dragon
     public void CreateDragon() {
         System.out.println("Saisissez un nouveau Dragon");
         Scanner sc = new Scanner(System.in);
         System.out.println("Nom : ");
-        this.setDragon(user.upperCaseFirst(sc.nextLine()));
+        this.setDragon(User.upperCaseFirst(sc.nextLine()));
         System.out.println("sexe : ");
-        this.setSexe(user.upperCaseFirst(user.maleOrFemale()));        
+        this.setSexe(User.upperCaseFirst(User.maleOrFemale()));
         System.out.println("longueur : (doit être en chiffre");
-        this.setLongueur(user.isANumber());
+        this.setLongueur(User.isANumber());
         System.out.println("nombre ecaille : (doit être en chiffre)");
-        this.setNombre_ecailles(user.isANumber());
+        this.setNombre_ecailles(User.isANumber());
         System.out.println("crache feu t'il du feu ? : ");
-        this.setCrache_feu(user.upperCaseFirst(user.spitFire()));
+        this.setCrache_feu(User.upperCaseFirst(User.spitFire()));
         System.out.println("comportement amoureux : ");
-        this.setComportement_amoureux(user.upperCaseFirst(sc.nextLine()));
-        System.out.println(this.toString());       
+        this.setComportement_amoureux(User.upperCaseFirst(sc.nextLine()));
+        System.out.println(this.toString());
     }
 
 }

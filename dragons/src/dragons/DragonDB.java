@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dragons;
 
 import java.sql.Connection;
@@ -14,12 +9,13 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- *
- * @author Patri
+  * @author Patrick 
+  * 
+  * all methode to interact with database
  */
 public class DragonDB {
 
-    //function for show all the Dragons or return an arrayList of Dragons 
+    //methode for show all the Dragons or return an arrayList of Dragons 
     static public List<Dragon> getAllDragons() {
         List<Dragon> dragons = new ArrayList<>();
         try {
@@ -45,7 +41,8 @@ public class DragonDB {
             return dragons;
         }
     }
-
+    
+    //methode for show a dragon in the database
     public static Dragon getDragon() {
         getAllDragons();
         Dragon dragon = new Dragon();
@@ -78,6 +75,7 @@ public class DragonDB {
 
     }
 
+    //methode for add dragon in the database
     public static void addDragon() {
         System.out.println("Saisissez un dragon à ajouter.");
         Dragon drag = new Dragon();
@@ -105,13 +103,14 @@ public class DragonDB {
         }
     }
 
+    //methode for delete any dragon in the database 
     public static boolean deleteDragonByName() {
         getAllDragons();
         System.out.println("Saisissez un dragon à supprimer (nom).");
         String nom;
         Scanner sc = new Scanner(System.in);
         nom = sc.nextLine();
-        nom= user.upperCaseFirst(nom);
+        nom = User.upperCaseFirst(nom);
         boolean success = false;
         try {
             String query = "DELETE FROM dragons WHERE dragon = ?";
@@ -127,6 +126,7 @@ public class DragonDB {
         return success;
     }
 
+    //methode for update any dragon in the database
     public static void updateDragon() {
         getAllDragons();
         System.out.println("Saisissez le nom du dragon à modifier.");
@@ -135,7 +135,7 @@ public class DragonDB {
         dragon = sc.nextLine();
         try {
             System.out.println("quel element souhaitez vous modifier ?");
-            String userChoice = user.userChoiceUpdate();
+            String userChoice = User.userChoiceUpdate();
             System.out.println("nouvelle valeur ?");
             String update;
             update = sc.nextLine();
@@ -143,7 +143,7 @@ public class DragonDB {
             String query = " UPDATE dragons SET " + userChoice + "  = ?  WHERE dragons.dragon = ? ";
             Connection cnx = ConnectionDB.connect();
             PreparedStatement declaration = cnx.prepareStatement(query);
-            declaration.setString(1, user.upperCaseFirst(update));
+            declaration.setString(1, User.upperCaseFirst(update));
             declaration.setString(2, dragon);
             int executeUpdate = declaration.executeUpdate();
             getAllDragons();
