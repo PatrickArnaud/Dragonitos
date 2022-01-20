@@ -138,8 +138,8 @@ public class DragonDB {
             System.out.println("nouvelle valeur ?");
             String update;
             update = sc.nextLine();
-           
-            String query = " UPDATE dragons SET "+ userChoice + "  = ?  WHERE dragons.dragon = ? ";
+
+            String query = " UPDATE dragons SET " + userChoice + "  = ?  WHERE dragons.dragon = ? ";
             Connection cnx = ConnectionDB.connect();
             PreparedStatement declaration = cnx.prepareStatement(query);
             declaration.setString(1, update);
@@ -171,19 +171,19 @@ public class DragonDB {
                 break;
             case 2:
                 choice = "sexe";
-                 break;
+                break;
             case 3:
                 choice = "longueur";
-                 break;
+                break;
             case 4:
                 choice = "nombre_ecailles";
-                 break;
+                break;
             case 5:
                 choice = "crache_feu";
-                 break;
+                break;
             case 6:
-                choice = "comportement_amoureux";  
-                 break;
+                choice = "comportement_amoureux";
+                break;
         }
         System.out.println(choice);
         return choice;
