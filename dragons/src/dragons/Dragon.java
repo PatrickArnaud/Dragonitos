@@ -110,5 +110,4 @@ class Dragon {
         this.setComportement_amoureux(User.upperCaseFirst(sc.nextLine()));
         System.out.println(this.toString());
     }
-
 }

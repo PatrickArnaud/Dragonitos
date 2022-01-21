@@ -139,7 +139,6 @@ public class DragonDB {
             System.out.println("nouvelle valeur ?");
             String update;
             update = sc.nextLine();
-
             String query = " UPDATE dragons SET " + userChoice + "  = ?  WHERE dragons.dragon = ? ";
             Connection cnx = ConnectionDB.connect();
             PreparedStatement declaration = cnx.prepareStatement(query);

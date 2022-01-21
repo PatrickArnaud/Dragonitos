@@ -9,7 +9,10 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-        User.launcher();
+        do {
+            System.out.println("Bienvenue");
+            User.launcher();
+        } while (User.exit() == true);
 
     }
 }

@@ -12,11 +12,11 @@ import java.util.Scanner;
  */
 public class User {
 
+    // methode for close the application
     public static boolean exit() {
         System.out.println("Que souhaitez vous faire ?");
         boolean choice = true;
         int value;
-
         System.out.println("1 - Continuer à naviguer sur la base de donnée ");
         System.out.println("2 - Quitter le programme");
         Scanner sc = new Scanner(System.in);
@@ -32,15 +32,12 @@ public class User {
         return choice;
     }
 
+    //utilisation pattern
     public static void launcher() {
 
         System.out.println("que souhaitez vous faire ?");
-        String choice = null;
         int value;
-        System.out.println("1 - Consulter la liste de tout les dragon  ");
-        System.out.println("2 - Consulter un dragon en particulier ");
-        System.out.println("3 - Ajouter un dragon à la base de données  ");
-        System.out.println("4 - Modifier un dragon ");
+        Dialog.LauncherPattern();
         Scanner sc = new Scanner(System.in);
         value = sc.nextInt();
         switch (value) {
@@ -58,6 +55,7 @@ public class User {
                 break;
             case 5:
                 System.out.println("aurevoir");
+                System.exit(0);
                 break;
         }
     }
@@ -91,7 +89,6 @@ public class User {
         }
         System.out.println(choice);
         return choice;
-
     }
 
     // used to normalise any update on database for String 
@@ -157,7 +154,7 @@ public class User {
                     System.out.println("merci de s'il crache du feu( oui ou non )");
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Cette valeur n'est pas un sexe");
+                System.out.println("Cette valeur n'est pas oui ou non");
             }
         } while (check != true);
         return fire;
