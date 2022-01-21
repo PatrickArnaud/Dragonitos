@@ -7,7 +7,9 @@ package dragons;
 
 /**
  *
- * @author Patri
+ * @author Patrick
+ * all Dialog for my application
+ * 
  */
 public class Dialog {
     
