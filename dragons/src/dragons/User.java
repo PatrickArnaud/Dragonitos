@@ -34,7 +34,6 @@ public class User {
 
     //utilisation pattern
     public static void launcher() {
-
         System.out.println("que souhaitez vous faire ?");
         int value;
         Dialog.LauncherPattern();
@@ -87,7 +86,6 @@ public class User {
                 choice = "comportement_amoureux";
                 break;
         }
-        System.out.println(choice);
         return choice;
     }
 

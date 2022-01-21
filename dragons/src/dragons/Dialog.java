@@ -11,8 +11,7 @@ package dragons;
  * all Dialog for my application
  * 
  */
-public class Dialog {
-    
+public class Dialog {    
     //Text for launcher
     public static void LauncherPattern() {
         System.out.println("1 - Consulter la liste de tout les dragon  ");
@@ -20,8 +19,5 @@ public class Dialog {
         System.out.println("3 - Ajouter un dragon à la base de données  ");
         System.out.println("4 - Modifier un dragon ");
         System.out.println("5 - Quitter le programme ");
-    }
-    
-    
-    
+    }          
 }
