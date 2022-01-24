@@ -76,7 +76,7 @@ public class DragonDB {
     }
 
     //methode for add dragon in the database
-    public static void addDragon() {
+    public static Dragon addDragon() {
         System.out.println("Saisissez un dragon à ajouter.");
         Dragon drag = new Dragon();
         drag.CreateDragon();
@@ -101,6 +101,7 @@ public class DragonDB {
                     "Erreur d'insertion dragon: " + e.getMessage()
             );
         }
+        return drag;
     }
 
     //methode for delete any dragon in the database 
@@ -123,6 +124,23 @@ public class DragonDB {
             System.err.println("Erreur suppression dragon : "
                     + e.getMessage());
         }
+        return success;
+    }
+    
+     public static boolean deleteDragonByNameInterface(String dragon) {
+        boolean success = false;
+        try {
+            String query = "DELETE FROM dragons WHERE dragon = ?";
+            Connection cnx = ConnectionDB.connect();
+            PreparedStatement declaration = cnx.prepareStatement(query);
+            declaration.setString(1, dragon);
+            int executeUpdate = declaration.executeUpdate();
+            success = (executeUpdate == 1);
+        } catch (SQLException e) {
+            System.err.println("Erreur suppression dragon : "
+                    + e.getMessage());
+        }
+         System.out.println("cool");
         return success;
     }
 

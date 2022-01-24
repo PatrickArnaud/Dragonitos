@@ -12,7 +12,7 @@ public class Main {
 //        do {
 //            System.out.println("Bienvenue");
 //            User.launcher();
-//        } while (User.exit() == true);
-        UserInterface.main(args);
+////        } while (User.exit() == true);
+//        UserInterface.main(args);
     }
 }

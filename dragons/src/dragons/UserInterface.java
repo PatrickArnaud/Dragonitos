@@ -7,33 +7,83 @@ package dragons;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.table.TableColumnModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author Patri
  */
-public class UserInterface {
+public class UserInterface extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
+
+        UserInterface myDragon = new UserInterface();
+
+    }
+
+    private JButton delete = new JButton("Supprimer dragon");
+    private JButton add = new JButton("Ajouter dragon");
+    private JButton modify = new JButton("Modifier dragon");
+    private JTextField deleteText = new JTextField("Entrez ici le nom du dragon à supprimer");
+    private JTable table;
+    JPanel buttonList = new JPanel();
+    JLabel labelHead = new JLabel("Liste des dragons");
+
+    public UserInterface() {
         final JFrame frame = new JFrame("Table des Dragons");
 
         String[] columnsNames = {"Id", "Nom", "Sexe", "Longueur", "Nombres écailles", "Crache feu", "Comportement amoureux"};
         Object[][] data;
         data = (Object[][]) Utils.convertArrayDragonsToTab();
-
         JTable table = new JTable(data, columnsNames);
-        JButton delete = new JButton("Supprimer dragon");
-        JButton add = new JButton("Ajouter dragon");
-        JPanel buttonList = new JPanel();
+
+        delete.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DragonDB.deleteDragonByNameInterface(deleteText.getText());
+                frame.remove(table);
+                String[] columnsNames = {"Id", "Nom", "Sexe", "Longueur", "Nombres écailles", "Crache feu", "Comportement amoureux"};
+                Object[][] data;
+                data = (Object[][]) Utils.convertArrayDragonsToTab();
+                JTable table = new JTable(data, columnsNames);
+                table.setRowHeight(30);
+                labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
+                frame.add(table);
+                frame.validate();
+
+            }
+        });
+
+        add.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ajouter");
+                addDragonInterface addDragon = new addDragonInterface();
+                
+
+            }
+        });
+
+        modify.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("modifier");
+            }
+        });
+        frame.setResizable(false);
+
+        buttonList.add(deleteText);
+        deleteText.setSize(50, HEIGHT);
         buttonList.add(delete);
         buttonList.add(add);
+        buttonList.add(modify);
 
         table.setRowHeight(30);
         JScrollPane scroll = new JScrollPane(table);
         table.setFillsViewportHeight(true);
 
-        JLabel labelHead = new JLabel("Liste des dragons");
         labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
 
         frame.getContentPane().add(labelHead, BorderLayout.PAGE_START);
@@ -42,9 +92,14 @@ public class UserInterface {
         frame.getContentPane().add(buttonList, BorderLayout.PAGE_END);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
+        frame.setSize(800, 500);
         frame.setVisible(true);
 
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
