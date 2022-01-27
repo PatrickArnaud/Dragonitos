@@ -22,17 +22,16 @@ public class UserInterface extends JFrame implements ActionListener {
         UserInterface myDragon = new UserInterface();
 
     }
-
+    final JFrame frame = new JFrame("Table des Dragons");
     private JButton delete = new JButton("Supprimer dragon");
     private JButton add = new JButton("Ajouter dragon");
     private JButton modify = new JButton("Modifier dragon");
     private JTextField deleteText = new JTextField("Entrez ici le nom du dragon à supprimer");
-    private JTable table;
+    public JTable table;
     JPanel buttonList = new JPanel();
     JLabel labelHead = new JLabel("Liste des dragons");
 
     public UserInterface() {
-        final JFrame frame = new JFrame("Table des Dragons");
 
         String[] columnsNames = {"Id", "Nom", "Sexe", "Longueur", "Nombres écailles", "Crache feu", "Comportement amoureux"};
         Object[][] data;
@@ -52,16 +51,14 @@ public class UserInterface extends JFrame implements ActionListener {
                 labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
                 frame.add(table);
                 frame.validate();
-
             }
         });
 
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Ajouter");
                 addDragonInterface addDragon = new addDragonInterface();
-                
+                 frame.setVisible(false);
 
             }
         });
@@ -79,27 +76,22 @@ public class UserInterface extends JFrame implements ActionListener {
         buttonList.add(delete);
         buttonList.add(add);
         buttonList.add(modify);
-
         table.setRowHeight(30);
         JScrollPane scroll = new JScrollPane(table);
         table.setFillsViewportHeight(true);
-
         labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
-
         frame.getContentPane().add(labelHead, BorderLayout.PAGE_START);
         //ajouter la table au frame
         frame.getContentPane().add(scroll, BorderLayout.CENTER);
         frame.getContentPane().add(buttonList, BorderLayout.PAGE_END);
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 500);
         frame.setVisible(true);
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //   abstract method
     }
 
 }

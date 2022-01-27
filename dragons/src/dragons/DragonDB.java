@@ -9,9 +9,9 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
-  * @author Patrick 
-  * 
-  * all methode to interact with database
+ * @author Patrick
+ *
+ * all methode to interact with database
  */
 public class DragonDB {
 
@@ -41,7 +41,7 @@ public class DragonDB {
             return dragons;
         }
     }
-    
+
     //methode for show a dragon in the database
     public static Dragon getDragon() {
         getAllDragons();
@@ -126,8 +126,8 @@ public class DragonDB {
         }
         return success;
     }
-    
-     public static boolean deleteDragonByNameInterface(String dragon) {
+
+    public static boolean deleteDragonByNameInterface(String dragon) {
         boolean success = false;
         try {
             String query = "DELETE FROM dragons WHERE dragon = ?";
@@ -140,7 +140,7 @@ public class DragonDB {
             System.err.println("Erreur suppression dragon : "
                     + e.getMessage());
         }
-         System.out.println("cool");
+        System.out.println("cool");
         return success;
     }
 
@@ -172,6 +172,31 @@ public class DragonDB {
         } catch (Exception e) {
             System.err.println(
                     "Erreur d'insertion modification dragon : " + e.getMessage()
+            );
+        }
+    }
+
+    public static void addDragonInterface(String name, String sex, int longueur, int scale, String fire, String love) {
+
+        try {
+            String query = "INSERT INTO dragons (dragon , sexe, longueur, nombre_ecailles, crache_feu,comportement_amoureux) VALUES ( ? , ? , ? , ? , ? , ? )";
+            Connection cnx = ConnectionDB.connect();
+            PreparedStatement declaration = cnx.prepareStatement(query);
+            declaration.setString(1, name);
+            declaration.setString(2, sex);
+            declaration.setInt(3, longueur);
+            declaration.setInt(4, scale);
+            declaration.setString(5, fire);
+            declaration.setString(6, love);
+            int executeUpdate = declaration.executeUpdate();
+            if (executeUpdate == 1) {
+                System.out.println("insertion dragon effectué ! ");
+            } else {
+                System.out.println("insertion dragon non effectue");
+            }
+        } catch (Exception e) {
+            System.err.println(
+                    "Erreur d'insertion dragon: " + e.getMessage()
             );
         }
     }

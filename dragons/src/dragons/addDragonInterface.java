@@ -1,31 +1,85 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dragons;
 
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
  * @author Patrick
  */
-public class addDragonInterface {
+public class addDragonInterface extends UserInterface implements ActionListener {
+
+    JFrame addDrag = new JFrame();
+    private JTextField name = new JTextField("Nom");
+    private JTextField sex = new JTextField("Sexe");
+    private JTextField size = new JTextField("Taille");
+    private JTextField scale = new JTextField("Nombre d'écailles");
+    private JTextField fire = new JTextField("crache du feu ?");
+    private JTextField love = new JTextField("comportement amoureux");
+    private JButton validate = new JButton("Ajouter");
+    private JLabel label = new JLabel("votre saisie :");
+    JPanel settings = new JPanel();
 
     public addDragonInterface() {
         super();
-        build();//On initialise notre fenêtre
+        build();
+
+        validate.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Ajouter");
+                String nameDB = name.getText();
+                String sexDB = sex.getText();
+                String sizeDB = size.getText();
+                int sizeDBint = Integer.parseInt(sizeDB);
+                String scaleDB = scale.getText();
+                int scaleDBint = Integer.parseInt(scaleDB);
+                String fireDB = fire.getText();
+                String loveDB = love.getText();
+                DragonDB.addDragonInterface(User.upperCaseFirst(nameDB), User.upperCaseFirst(sexDB), sizeDBint, scaleDBint, User.upperCaseFirst(fireDB), User.upperCaseFirst(loveDB));
+                String[] columnsNames = {"Id", "Nom", "Sexe", "Longueur", "Nombres écailles", "Crache feu", "Comportement amoureux"};
+                Object[][] data;
+                data = (Object[][]) Utils.convertArrayDragonsToTab();
+                JTable table = new JTable(data, columnsNames);
+                table.setRowHeight(30);
+                labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
+                frame.add(table);
+                frame.validate();
+            }
+        });
     }
 
     void build() {
-        JFrame addDrag = new JFrame();
-        addDrag.setTitle("Ma première fenêtre"); //On donne un titre à l'application
-        addDrag.setSize(320, 240); //On donne une taille à notre fenêtre
-        addDrag.setLocationRelativeTo(null); //On centre la fenêtre sur l'écran
-        addDrag.setResizable(false); //On interdit la redimensionnement de la fenêtre
-        addDrag.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //On dit à l'application de se fermer lors du clic sur la croix
+        addDrag.setTitle("Ajouter dragon");
+        addDrag.setSize(800, 200);
+        addDrag.setLocationRelativeTo(null);
+        addDrag.setResizable(false);
+        addDrag.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addDrag.setVisible(true);
+        addDrag.setLayout(new GridLayout(2, 4));
+
+        addDrag.add(settings);
+
+        addDrag.add(label);
+        addDrag.add(name);
+        addDrag.add(sex);
+        addDrag.add(size);
+        addDrag.add(scale);
+        addDrag.add(fire);
+        addDrag.add(love);
+        addDrag.add(validate);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
