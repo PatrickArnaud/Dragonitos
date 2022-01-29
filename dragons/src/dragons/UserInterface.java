@@ -28,6 +28,7 @@ public class UserInterface extends JFrame implements ActionListener {
     private JButton modify = new JButton("Modifier dragon");
     private JTextField deleteText = new JTextField("Entrez ici le nom du dragon à supprimer");
     public JTable table;
+    private ScrollPane scroll = new ScrollPane();
     JPanel buttonList = new JPanel();
     JLabel labelHead = new JLabel("Liste des dragons");
 

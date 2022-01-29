@@ -60,7 +60,7 @@ public class addDragonInterface extends UserInterface implements ActionListener 
                 labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
                 frame.add(table);
                 frame.validate();
-
+                addDrag.dispose();
             }
         });
     }
