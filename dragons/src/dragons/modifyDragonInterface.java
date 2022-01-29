@@ -47,32 +47,6 @@ public class modifyDragonInterface extends UserInterface implements ActionListen
     public modifyDragonInterface() {
         super();
         build();
-
-//        validateChange.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                System.out.println("Ajouter");
-//                String nameDB = name.getText();
-//                String sexDB = sex.getText();
-//                String sizeDB = size.getText();
-//                int sizeDBint = Integer.parseInt(sizeDB);
-//                String scaleDB = scale.getText();
-//                int scaleDBint = Integer.parseInt(scaleDB);
-//                String fireDB = fire.getText();
-//                String loveDB = love.getText();
-//                String intDB = scale.getText();
-//                int intDBint = Integer.parseInt(intDB);                
-//                DragonDB.updateDragonInterface(User.upperCaseFirst(nameDB), User.upperCaseFirst(sexDB), sizeDBint, scaleDBint, User.upperCaseFirst(fireDB), User.upperCaseFirst(loveDB), intDBint);
-//                String[] columnsNames = {"Id", "Nom", "Sexe", "Longueur", "Nombres écailles", "Crache feu", "Comportement amoureux"};
-//                Object[][] data;
-//                data = (Object[][]) Utils.convertArrayDragonsToTab();
-//                JTable table = new JTable(data, columnsNames);
-//                table.setRowHeight(30);
-//                labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
-//                frame.add(table);
-//                frame.validate();
-//
-//            }
-//        });
     }
 
     void build() {
@@ -152,11 +126,17 @@ public class modifyDragonInterface extends UserInterface implements ActionListen
                 int scaleInt = Integer.parseInt(scaleString);
                 String idString = idLabelShow.getText();
                 int idInt = Integer.parseInt(idString);
-
-                System.out.println("id" + idInt);
-                System.out.println("nom=" + nameDB + "sex=" + sexDB + "size=" + sizeInt + "scale=" + scaleInt + "fire " + fireDB + "love= " + loveDB + "idInt=" + idInt);
                 DragonDB.updateDragonInterface(nameDB, sexDB, sizeInt, scaleInt, fireDB, loveDB, idInt);
                 modifyDragUpdate.dispose();
+                modifyDrag.dispose();
+                String[] columnsNames = {"Id", "Nom", "Sexe", "Longueur", "Nombres écailles", "Crache feu", "Comportement amoureux"};
+                Object[][] data;
+                data = (Object[][]) Utils.convertArrayDragonsToTab();
+                JTable table = new JTable(data, columnsNames);
+                table.setRowHeight(30);
+                labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
+                frame.add(table);
+                frame.validate();
             }
         });
     }
