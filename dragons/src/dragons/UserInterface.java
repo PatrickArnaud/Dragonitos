@@ -39,6 +39,7 @@ public class UserInterface extends JFrame implements ActionListener {
         data = (Object[][]) Utils.convertArrayDragonsToTab();
         JTable table = new JTable(data, columnsNames);
 
+        //delete dragon on data base by name and refresh JTable
         delete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 /**
  *
  * @author Patrick
+ * modification interface
  */
 public class modifyDragonInterface extends UserInterface implements ActionListener {
 
@@ -49,6 +50,8 @@ public class modifyDragonInterface extends UserInterface implements ActionListen
         build();
     }
 
+    
+    //choosing with id dragon to modify
     void build() {
         modifyDrag.add(idLabel);
         modifyDrag.add(idInput);
@@ -72,7 +75,7 @@ public class modifyDragonInterface extends UserInterface implements ActionListen
         });
 
     }
-
+// get  dragon information ans set textfield modification
     void buildModify(int id) {
         Dragon drag = new Dragon();
         drag = DragonDB.getDragonByIdInterface(id);
@@ -113,6 +116,7 @@ public class modifyDragonInterface extends UserInterface implements ActionListen
         modifyDragUpdate.add(love);
         modifyDragUpdate.add(validateChange);
 
+        // update on database
         validateChange.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
