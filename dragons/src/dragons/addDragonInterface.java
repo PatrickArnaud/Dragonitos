@@ -1,5 +1,6 @@
 package dragons;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -18,14 +19,21 @@ import javax.swing.JTextField;
 public class addDragonInterface extends UserInterface implements ActionListener {
 
     JFrame addDrag = new JFrame();
-    private JTextField name = new JTextField("Nom");
-    private JTextField sex = new JTextField("Sexe");
-    private JTextField size = new JTextField("Taille");
-    private JTextField scale = new JTextField("Nombre d'écailles");
-    private JTextField fire = new JTextField("crache du feu ?");
-    private JTextField love = new JTextField("comportement amoureux");
+    private JTextField name = new JTextField();
+    private JTextField sex = new JTextField();
+    private JTextField size = new JTextField();
+    private JTextField scale = new JTextField();
+    private JTextField fire = new JTextField();
+    private JTextField love = new JTextField();
     private JButton validate = new JButton("Ajouter");
-    private JLabel label = new JLabel("votre saisie :");
+    private JLabel nameLabel = new JLabel("Nom");
+    private JLabel sexLabel = new JLabel("Sexe");
+    private JLabel sizeLabel = new JLabel("Taille");
+    private JLabel scaleLabel = new JLabel("Nombre d'écailles");
+    private JLabel fireLabel = new JLabel("crache du feu ?");
+    private JLabel loveLabel = new JLabel("comportement amoureux");
+    private JLabel input = new JLabel("votre saisie");
+
     JPanel settings = new JPanel();
 
     public addDragonInterface() {
@@ -52,29 +60,35 @@ public class addDragonInterface extends UserInterface implements ActionListener 
                 labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
                 frame.add(table);
                 frame.validate();
+
             }
         });
     }
 
     void build() {
         addDrag.setTitle("Ajouter dragon");
-        addDrag.setSize(800, 200);
+        addDrag.setSize(400, 800);
         addDrag.setLocationRelativeTo(null);
         addDrag.setResizable(false);
         addDrag.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addDrag.setVisible(true);
-        addDrag.setLayout(new GridLayout(2, 4));
-
+        addDrag.setLayout(new GridLayout(8, 2));
         addDrag.add(settings);
-
-        addDrag.add(label);
+        addDrag.add(input);
+        addDrag.add(nameLabel);
         addDrag.add(name);
+        addDrag.add(sexLabel);
         addDrag.add(sex);
+        addDrag.add(sizeLabel);
         addDrag.add(size);
+        addDrag.add(scaleLabel);
         addDrag.add(scale);
+        addDrag.add(fireLabel);
         addDrag.add(fire);
+        addDrag.add(loveLabel);
         addDrag.add(love);
         addDrag.add(validate);
+
     }
 
     @Override
