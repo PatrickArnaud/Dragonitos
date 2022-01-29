@@ -72,7 +72,7 @@ public class addDragonInterface extends UserInterface implements ActionListener 
         addDrag.setResizable(false);
         addDrag.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         addDrag.setVisible(true);
-        addDrag.setLayout(new GridLayout(8, 2));
+        addDrag.setLayout(new GridLayout(9, 2));
         addDrag.add(settings);
         addDrag.add(input);
         addDrag.add(nameLabel);
@@ -88,7 +88,6 @@ public class addDragonInterface extends UserInterface implements ActionListener 
         addDrag.add(loveLabel);
         addDrag.add(love);
         addDrag.add(validate);
-
     }
 
     @Override

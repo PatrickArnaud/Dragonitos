@@ -127,6 +127,33 @@ public class DragonDB {
         return success;
     }
 
+    public static Dragon getDragonByIdInterface(int id) {
+        Dragon dragon = new Dragon();
+
+        try {
+            String query = "SELECT id_dragon, dragon , sexe, longueur, nombre_ecailles, crache_feu,comportement_amoureux FROM dragons WHERE id_dragon = ?";
+            Connection cnx = ConnectionDB.connect();
+            PreparedStatement declaration = cnx.prepareStatement(query);
+            declaration.setInt(1, id);
+            ResultSet resultSet = declaration.executeQuery();
+            while (resultSet.next()) {
+                dragon.setId_dragon(resultSet.getInt(1));
+                dragon.setDragon(resultSet.getString(2));
+                dragon.setSexe(resultSet.getString(3));
+                dragon.setLongueur(resultSet.getInt(4));
+                dragon.setNombre_ecailles(resultSet.getInt(5));
+                dragon.setCrache_feu(resultSet.getString(6));
+                dragon.setComportement_amoureux(resultSet.getString(7));
+            }
+            System.out.println(" dragons => " + dragon);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } finally {
+            dragon.toString();
+            return dragon;
+        }
+    }
+
     public static boolean deleteDragonByNameInterface(String dragon) {
         boolean success = false;
         try {
@@ -193,6 +220,32 @@ public class DragonDB {
                 System.out.println("insertion dragon effectué ! ");
             } else {
                 System.out.println("insertion dragon non effectue");
+            }
+        } catch (Exception e) {
+            System.err.println(
+                    "Erreur d'insertion dragon: " + e.getMessage()
+            );
+        }
+    }
+
+    public static void updateDragonInterface(String name, String sex, int longueur, int scale, String fire, String love,int id) {
+
+        try {
+            String query = " UPDATE dragons SET dragon = ?, sexe = ?,longueur = ?, nombre_ecailles = ?, crache_feu = ? , comportement_amoureux = ? WHERE dragons.id_dragon = ?";            
+            Connection cnx = ConnectionDB.connect();
+            PreparedStatement declaration = cnx.prepareStatement(query);
+            declaration.setString(1, name);
+            declaration.setString(2, sex);
+            declaration.setInt(3, longueur);
+            declaration.setInt(4, scale);
+            declaration.setString(5, fire);
+            declaration.setString(6, love);
+            declaration.setInt(7, id);
+            int executeUpdate = declaration.executeUpdate();
+            if (executeUpdate == 1) {
+                System.out.println("modification dragon effectué ! ");
+            } else {
+                System.out.println("modification dragon non effectue");
             }
         } catch (Exception e) {
             System.err.println(

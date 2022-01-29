@@ -58,7 +58,7 @@ public class UserInterface extends JFrame implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addDragonInterface addDragon = new addDragonInterface();
-                 frame.setVisible(false);
+                frame.setVisible(false);
 
             }
         });
@@ -66,7 +66,8 @@ public class UserInterface extends JFrame implements ActionListener {
         modify.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("modifier");
+                modifyDragonInterface modifyDragon = new modifyDragonInterface();
+                frame.setVisible(false);
             }
         });
         frame.setResizable(false);
