@@ -8,7 +8,11 @@ import java.sql.SQLException;
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-DragonDB.updateDragonInterface("garg","male",12312,321,"oui","Cool",12);
+        
+        
+ UserInterface myDragon = new UserInterface();
+ 
+        // using IDE to modify database
 //        do {
 //            System.out.println("Bienvenue");
 //            User.launcher();
